@@ -1,0 +1,7 @@
+{
+  "name": "App Ventas de Entradas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
