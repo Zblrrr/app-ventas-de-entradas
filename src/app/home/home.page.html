@@ -1,20 +1,47 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Venta de Entradas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-input label="Nombre" [(ngModel)]="cliente.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Apellido" [(ngModel)]="cliente.apellido"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Edad" [(ngModel)]="cliente.edad" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select label="Tipo de Evento" [(ngModel)]="eventoSeleccionado" (ionChange)="mostrarEntradas()">
+        <ion-select-option value="cine">Cine</ion-select-option>
+        <ion-select-option value="deportes">Deportes</ion-select-option>
+        <ion-select-option value="conciertos">Conciertos</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <ion-list *ngIf="entradas && entradas.length > 0">
+    <ion-item *ngFor="let entrada of entradas">
+      <ion-label>
+        <ion-input type="number" placeholder="Cantidad" [(ngModel)]="entrada.cantidad" (ngModelChange)="calcularTotal()"></ion-input>
+        <p>Precio: {{ entrada.precio }} CLP</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="eventoSeleccionado" style="padding: 10px;">
+    <strong>Total: {{ total }} CLP</strong>
   </div>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-button expand="block" (click)="finalizarCompra()">Finalizar Compra</ion-button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>
