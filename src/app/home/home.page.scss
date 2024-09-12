@@ -85,3 +85,22 @@ ion-footer {
   bottom: 0;
   width: 100%;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.detalle-item {
+  background-color: rgba(0, 0, 0, 0.1); /* Fondo oscuro y semi-translúcido */
+  padding: 10px;
+  width: 100%; /* Asegura que el div se expanda a lo largo de la pantalla */
+}
+
+/* Asegura que el total se mantenga en la parte inferior */
+.total-container {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1); /* Fondo oscuro y semi-translúcido */
+  border-radius: 5px;
+  margin-top: auto; /* Empuja el total hacia el final del contenido */
+}

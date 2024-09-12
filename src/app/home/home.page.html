@@ -8,7 +8,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item lines="none">
+    <ion-item>
       <ion-input label="Nombre" [(ngModel)]="cliente.nombre"></ion-input>
     </ion-item>
     <ion-item>
@@ -28,15 +28,17 @@
 
   <ion-list *ngIf="entradas && entradas.length > 0">
     <ion-item *ngFor="let entrada of entradas">
-      <ion-label>
-        <ion-input type="number" placeholder="Cantidad" [(ngModel)]="entrada.cantidad" (ngModelChange)="calcularTotal()"></ion-input>
-        <p>Precio: {{ entrada.precio }} CLP</p>
-      </ion-label>
+      <div class="detalle-item">
+        <ion-label>
+          <ion-input type="number" placeholder="Cantidad" [(ngModel)]="entrada.cantidad" (ngModelChange)="calcularTotal()"></ion-input>
+          <p>Precio: {{ entrada.precio }} CLP</p>
+        </ion-label>
+      </div>
     </ion-item>
   </ion-list>
 
-  <div *ngIf="eventoSeleccionado" style="padding: 10px;">
-    <strong>Total: {{ total }} CLP</strong>
+  <div *ngIf="eventoSeleccionado" class="total-container">
+    <strong>Total: {{ totalSinDescuento }} CLP</strong>
   </div>
 
   <ion-footer>
